@@ -5,13 +5,16 @@
     <!--@mbg.generated-->
     <!--@Table cr_user-->
     <id column="openid" jdbcType="VARCHAR" property="openid" />
-    <result column="student_name" jdbcType="VARCHAR" property="studentName" />
-    <result column="student_num" jdbcType="VARCHAR" property="studentNum" />
-    <result column="student_sex" jdbcType="VARCHAR" property="studentSex" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_num" jdbcType="VARCHAR" property="userNum" />
+    <result column="user_sex" jdbcType="VARCHAR" property="userSex" />
+    <result column="user_role" jdbcType="INTEGER" property="userRole" />
+    <result column="user_phone" jdbcType="VARCHAR" property="userPhone" />
+    <result column="user_nikename" jdbcType="VARCHAR" property="userNikename" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    openid, student_name, student_num, student_sex
+    openid, user_name, user_num, user_sex, user_role, user_phone, user_nikename
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     <!--@mbg.generated-->
@@ -27,10 +30,12 @@
   </delete>
   <insert id="insert" parameterType="com.jwd.classroom.pojo.CrUser">
     <!--@mbg.generated-->
-    insert into cr_user (openid, student_name, student_num, 
-      student_sex)
-    values (#{openid,jdbcType=VARCHAR}, #{studentName,jdbcType=VARCHAR}, #{studentNum,jdbcType=VARCHAR}, 
-      #{studentSex,jdbcType=VARCHAR})
+    insert into cr_user (openid, user_name, user_num, 
+      user_sex, user_role, user_phone, 
+      user_nikename)
+    values (#{openid,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userNum,jdbcType=VARCHAR}, 
+      #{userSex,jdbcType=VARCHAR}, #{userRole,jdbcType=INTEGER}, #{userPhone,jdbcType=VARCHAR}, 
+      #{userNikename,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.jwd.classroom.pojo.CrUser">
     <!--@mbg.generated-->
@@ -39,28 +44,46 @@
       <if test="openid != null and openid != ''">
         openid,
       </if>
-      <if test="studentName != null and studentName != ''">
-        student_name,
+      <if test="userName != null and userName != ''">
+        user_name,
       </if>
-      <if test="studentNum != null and studentNum != ''">
-        student_num,
+      <if test="userNum != null and userNum != ''">
+        user_num,
       </if>
-      <if test="studentSex != null and studentSex != ''">
-        student_sex,
+      <if test="userSex != null and userSex != ''">
+        user_sex,
+      </if>
+      <if test="userRole != null">
+        user_role,
+      </if>
+      <if test="userPhone != null and userPhone != ''">
+        user_phone,
+      </if>
+      <if test="userNikename != null and userNikename != ''">
+        user_nikename,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="openid != null and openid != ''">
         #{openid,jdbcType=VARCHAR},
       </if>
-      <if test="studentName != null and studentName != ''">
-        #{studentName,jdbcType=VARCHAR},
+      <if test="userName != null and userName != ''">
+        #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="studentNum != null and studentNum != ''">
-        #{studentNum,jdbcType=VARCHAR},
+      <if test="userNum != null and userNum != ''">
+        #{userNum,jdbcType=VARCHAR},
       </if>
-      <if test="studentSex != null and studentSex != ''">
-        #{studentSex,jdbcType=VARCHAR},
+      <if test="userSex != null and userSex != ''">
+        #{userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="userRole != null">
+        #{userRole,jdbcType=INTEGER},
+      </if>
+      <if test="userPhone != null and userPhone != ''">
+        #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userNikename != null and userNikename != ''">
+        #{userNikename,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -68,14 +91,23 @@
     <!--@mbg.generated-->
     update cr_user
     <set>
-      <if test="studentName != null and studentName != ''">
-        student_name = #{studentName,jdbcType=VARCHAR},
+      <if test="userName != null and userName != ''">
+        user_name = #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="studentNum != null and studentNum != ''">
-        student_num = #{studentNum,jdbcType=VARCHAR},
+      <if test="userNum != null and userNum != ''">
+        user_num = #{userNum,jdbcType=VARCHAR},
       </if>
-      <if test="studentSex != null and studentSex != ''">
-        student_sex = #{studentSex,jdbcType=VARCHAR},
+      <if test="userSex != null and userSex != ''">
+        user_sex = #{userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="userRole != null">
+        user_role = #{userRole,jdbcType=INTEGER},
+      </if>
+      <if test="userPhone != null and userPhone != ''">
+        user_phone = #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userNikename != null and userNikename != ''">
+        user_nikename = #{userNikename,jdbcType=VARCHAR},
       </if>
     </set>
     where openid = #{openid,jdbcType=VARCHAR}
@@ -83,9 +115,12 @@
   <update id="updateByPrimaryKey" parameterType="com.jwd.classroom.pojo.CrUser">
     <!--@mbg.generated-->
     update cr_user
-    set student_name = #{studentName,jdbcType=VARCHAR},
-      student_num = #{studentNum,jdbcType=VARCHAR},
-      student_sex = #{studentSex,jdbcType=VARCHAR}
+    set user_name = #{userName,jdbcType=VARCHAR},
+      user_num = #{userNum,jdbcType=VARCHAR},
+      user_sex = #{userSex,jdbcType=VARCHAR},
+      user_role = #{userRole,jdbcType=INTEGER},
+      user_phone = #{userPhone,jdbcType=VARCHAR},
+      user_nikename = #{userNikename,jdbcType=VARCHAR}
     where openid = #{openid,jdbcType=VARCHAR}
   </update>
 </mapper>
